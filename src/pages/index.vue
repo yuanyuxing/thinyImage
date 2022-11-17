@@ -61,7 +61,10 @@ const beforeUpload = async (rawFile: UploadRawFile) => {
 
 const thinyImgClick = async () => {
   loading.value = true
-  axios.post<ThinyData>('/thiny/shrink', imageSource.value, {
+
+  const url = import.meta.env.PROD ? 'https://api.tinify.com' : '/thiny/shrink'
+
+  axios.post<ThinyData>(url, imageSource.value, {
     headers: {
       Authorization: `Basic ${encryptBASE64AsBasicAuth('api', API_KEY)} `,
     },
