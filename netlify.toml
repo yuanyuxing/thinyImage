@@ -7,13 +7,12 @@
   command = "npx pnpm i --store=node_modules/.pnpm-store && npx pnpm run build"
 
 [[redirects]]
+  from = "/thiny/*"
+  to = "https://api.tinify.com/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[[redirects]]
-  from = "/shrink"
-  to = "https://api.tinify.com"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
